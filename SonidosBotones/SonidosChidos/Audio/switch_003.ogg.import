@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/switch_003.ogg-18f59a9246af9253bd2839518b8d1804.oggstr"
+
+[deps]
+
+source_file="res://SonidosBotones/SonidosChidos/Audio/switch_003.ogg"
+dest_files=[ "res://.import/switch_003.ogg-18f59a9246af9253bd2839518b8d1804.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

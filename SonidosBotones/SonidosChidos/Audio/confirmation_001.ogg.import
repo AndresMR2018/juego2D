@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/confirmation_001.ogg-d4c9d983630f212e934cfced9fe25d32.oggstr"
+
+[deps]
+
+source_file="res://SonidosBotones/SonidosChidos/Audio/confirmation_001.ogg"
+dest_files=[ "res://.import/confirmation_001.ogg-d4c9d983630f212e934cfced9fe25d32.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

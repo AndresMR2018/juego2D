@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/scratch_003.ogg-f448b5f3642584c11af9f2e2ca660b33.oggstr"
+
+[deps]
+
+source_file="res://SonidosBotones/SonidosChidos/Audio/scratch_003.ogg"
+dest_files=[ "res://.import/scratch_003.ogg-f448b5f3642584c11af9f2e2ca660b33.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

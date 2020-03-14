@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/minimize_005.ogg-07555deac95f859dc930d27a62280574.oggstr"
+
+[deps]
+
+source_file="res://SonidosBotones/SonidosChidos/Audio/minimize_005.ogg"
+dest_files=[ "res://.import/minimize_005.ogg-07555deac95f859dc930d27a62280574.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

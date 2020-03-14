@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Plataformas/PNG/Enemies/wingMan5.png" type="Texture" id=1]
+[ext_resource path="res://Plataformas/PNG/Enemies/wingMan1.png" type="Texture" id=2]
+[ext_resource path="res://Plataformas/PNG/Enemies/wingMan2.png" type="Texture" id=3]
+[ext_resource path="res://Plataformas/PNG/Enemies/wingMan3.png" type="Texture" id=4]
+[ext_resource path="res://Plataformas/PNG/Enemies/wingMan4.png" type="Texture" id=5]
+[ext_resource path="res://Enemigo.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 63.231, 45.1882 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "volarEnemigo",
+"speed": 10.0
+} ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "volarEnemigo"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 150 ), Vector2( 0, 0 ), Vector2( 0, -150 ) ]
+}
+
+[node name="Enemigo" type="Area2D"]
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.33923, 4.03484 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.562805, -3.11516 )
+scale = Vector2( 0.702279, 0.708777 )
+frames = SubResource( 2 )
+animation = "volarEnemigo"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "volarEnemigo"
+anims/volarEnemigo = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

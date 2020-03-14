@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactGeneric_light_000.ogg-f1e697f84544ef9863d693d2b9c3d1fe.oggstr"
+
+[deps]
+
+source_file="res://SonidosBotones/SonidosImpacto/Audio/impactGeneric_light_000.ogg"
+dest_files=[ "res://.import/impactGeneric_light_000.ogg-f1e697f84544ef9863d693d2b9c3d1fe.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

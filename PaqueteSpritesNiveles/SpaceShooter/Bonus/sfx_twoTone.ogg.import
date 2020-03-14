@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_twoTone.ogg-a885d9dc1cb0fa28518d757544586167.oggstr"
+
+[deps]
+
+source_file="res://PaqueteSpritesNiveles/SpaceShooter/Bonus/sfx_twoTone.ogg"
+dest_files=[ "res://.import/sfx_twoTone.ogg-a885d9dc1cb0fa28518d757544586167.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

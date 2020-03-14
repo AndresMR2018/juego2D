@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/error_005.ogg-cd837678e5337801d69279b184ca8bda.oggstr"
+
+[deps]
+
+source_file="res://SonidosBotones/SonidosChidos/Audio/error_005.ogg"
+dest_files=[ "res://.import/error_005.ogg-cd837678e5337801d69279b184ca8bda.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

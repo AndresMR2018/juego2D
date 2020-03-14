@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Plataformas/PNG/Enemies/wingMan1.png" type="Texture" id=1]
+[ext_resource path="res://Plataformas/PNG/Enemies/wingMan3.png" type="Texture" id=2]
+[ext_resource path="res://Plataformas/PNG/Enemies/wingMan2.png" type="Texture" id=3]
+[ext_resource path="res://Plataformas/PNG/Enemies/wingMan5.png" type="Texture" id=4]
+[ext_resource path="res://Plataformas/PNG/Enemies/wingMan4.png" type="Texture" id=5]
+[ext_resource path="res://EnemigoL1.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "volarEnemigo",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 46.1901, 32.6774 )
+
+[node name="EnemigoL1" type="Area2D"]
+position = Vector2( 518.789, 258.369 )
+script = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 2.47632, -1.98723 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+animation = "volarEnemigo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4.23425, -1.40227 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

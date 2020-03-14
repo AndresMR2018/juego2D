@@ -1,0 +1,168 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Portal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Node2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Plataformas.tres" type="TileSet" id=3]
+[ext_resource path="res://Backgrounds/backgroundColorDesert.png" type="Texture" id=4]
+[ext_resource path="res://Nivel2.gd" type="Script" id=5]
+[ext_resource path="res://escrituras.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Font/ARIBLK.TTF" type="DynamicFontData" id=7]
+[ext_resource path="res://jeroglificos.png" type="Texture" id=8]
+[ext_resource path="res://sarcofago.tscn" type="PackedScene" id=9]
+[ext_resource path="res://EnemigoL2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sacofago.png" type="Texture" id=11]
+[ext_resource path="res://Tiempo.tscn" type="PackedScene" id=12]
+[ext_resource path="res://SonidosBotones/SonidosChidos/Audio/question_001.ogg" type="AudioStream" id=13]
+[ext_resource path="res://CajaDialogo.tscn" type="PackedScene" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+outline_size = 1
+outline_color = Color( 0.0196078, 0.00784314, 0.00784314, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.392157, 0.74902, 0.203922, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
+border_blend = true
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.964706, 0.0588235, 0.0588235, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.027451, 0.027451, 0.027451, 1 )
+border_blend = true
+corner_detail = 10
+
+[node name="Nivel2" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Portal" parent="." instance=ExtResource( 1 )]
+position = Vector2( 653.486, 81.3213 )
+scale = Vector2( 1.33695, 0.752071 )
+
+[node name="EnemigoL2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 924.516, 440.039 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="EnemigoL3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 897.673, 121.868 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="sarcofago" parent="." instance=ExtResource( 9 )]
+position = Vector2( 902.948, 288.294 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="escrituras" parent="." instance=ExtResource( 6 )]
+position = Vector2( 682.491, 551.433 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Tiempo" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1134.72, 455.112 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.5, 0.5 )
+tile_set = ExtResource( 3 )
+format = 1
+tile_data = PoolIntArray( -65495, 2, 0, 65564, 2, 0, 65567, 2, 0, 65570, 2, 0, 131096, 2, 0, 196657, 2, 0, 262168, 2, 0, 393240, 2, 0, 458795, 2, 0, 524312, 2, 0, 655386, 2, 0, 655387, 2, 0, 655389, 2, 0, 655390, 2, 0, 655391, 2, 0, 655392, 2, 0, 655393, 2, 0, 655395, 2, 0, 852010, 2, 0, 1048625, 2, 0, 1245184, 2, 0, 1245186, 2, 0, 1245187, 2, 0, 1245190, 2, 0, 1245191, 2, 0, 1245194, 2, 0, 1245196, 2, 0, 1245197, 2, 0, 1245199, 2, 0, 1245201, 2, 0, 1245204, 2, 0, 1245207, 2, 0, 1245209, 2, 0, 1245210, 2, 0, 1245225, 2, 0, 1245227, 2, 0, 1245229, 2, 0, 1310749, 2, 0, 1310752, 2, 0, 1310755, 2, 0, 1310758, 2, 0 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="KinematicBody" parent="." instance=ExtResource( 2 )]
+position = Vector2( 100.319, 510.131 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="KinematicBody"]
+
+[node name="Sprite" type="Sprite" parent="KinematicBody/ParallaxBackground"]
+position = Vector2( 774.869, 383.757 )
+scale = Vector2( 1.56622, 1 )
+texture = ExtResource( 4 )
+
+[node name="escritura" type="Sprite" parent="KinematicBody"]
+visible = false
+position = Vector2( -263.482, -593.271 )
+scale = Vector2( 0.12763, 0.132806 )
+texture = ExtResource( 8 )
+centered = false
+offset = Vector2( 1000, 0 )
+
+[node name="sarcofago" type="Sprite" parent="KinematicBody"]
+visible = false
+position = Vector2( -11.158, -559.297 )
+scale = Vector2( 0.68618, 0.564138 )
+texture = ExtResource( 11 )
+
+[node name="CajaDialogo" parent="KinematicBody" instance=ExtResource( 14 )]
+position = Vector2( -100.319, -510.131 )
+color = Color( 0.768627, 0.568627, 0.282353, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="KinematicBody"]
+
+[node name="Puntos" type="Label" parent="KinematicBody/CanvasLayer" groups=[
+"puntos",
+]]
+margin_left = 219.304
+margin_top = 37.2591
+margin_right = 259.304
+margin_bottom = 81.2591
+custom_fonts/font = SubResource( 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tiempo" type="Label" parent="KinematicBody/CanvasLayer" groups=[
+"tiempo",
+]]
+margin_left = 86.6833
+margin_top = 33.9262
+margin_right = 201.683
+margin_bottom = 91.9262
+custom_fonts/font = SubResource( 2 )
+text = "time"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vida" type="ProgressBar" parent="KinematicBody/CanvasLayer" groups=[
+"vida",
+]]
+margin_left = 57.1047
+margin_top = 13.5161
+margin_right = 322.105
+margin_bottom = 38.5161
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+value = 90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sonidos" type="Node2D" parent="." groups=[
+"sonidos",
+]]
+
+[node name="recoleccion" type="AudioStreamPlayer2D" parent="sonidos"]
+stream = ExtResource( 13 )
+volume_db = 19.555
+[connection signal="body_entered" from="Portal" to="KinematicBody" method="_on_Portal_body_entered"]
+[connection signal="body_entered" from="EnemigoL2" to="KinematicBody" method="_on_EnemigoL2_body_entered"]
+[connection signal="body_entered" from="EnemigoL3" to="KinematicBody" method="_on_EnemigoL3_body_entered"]
+[connection signal="body_entered" from="sarcofago" to="KinematicBody" method="_on_sarcofago_body_entered"]
+[connection signal="body_entered" from="escrituras" to="KinematicBody" method="_on_escrituras_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

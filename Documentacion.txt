@@ -1,0 +1,209 @@
+Pasos para hacer el juego
+
+*Pensar el genero del juego* *El nombre del juego* *entre muchas otras cosas*
+*Antes que nada tener cargado los recursos necesarios para crear el juego*
+*Necesitamos sprite Jugador*
+
+1. Crear el player o jugador 
+	1.1. Cambiar el nodo por default a KinematicBody2D
+	1.2. Añadir CollisionShape2D
+	1.3. Añadir AnimatedSprite
+	1.4. Añadir una Camera2D
+		1.3.1 Podemos descargar los sprites en Kenney.nl
+		Para animar: En el ispector de AnimatedSprite, añadimos un 
+		spriteFrame como nuevo > hacer clic en SpriteFrame > En la 
+		ventana que aparece cargar los sprites que desee animar donde
+		dice "Añadir textura desde archivo"
+		1.3.2 Programar el movimiento: Añadir script del player
+		      Crear la funcion _physics_process() o _process() desde la
+		      funcion ready()
+		1.3.3 Dentro del physics_process() agregar una funcion que identifique
+	              lo que hara, crearemos una funcion llamada "movimiento()"
+		1.3.4 Agregar var "movimiento_x"=0 y "movimiento_y" = 0 "direccion" = 0
+		1.3.5 Para generar una gravedad en el player movimiento_y +=10
+		1.3.6 Almacenamos la direccion con 
+			"direccion = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
+		1.3.7 Preguntamos if direccion == 1:
+		      		     movimiento_x=100
+			          elif direccion == -1:
+			             movimiento_x=-100
+				  else: movimiento_x = 0
+					
+
+		1.3.8 Añadir Salto: (dentro de la funcion movimiento)
+				  Preguntamos if_is_on_floor():
+				              movimiento_y=0
+				 if(Input.is_action_pressed("ui_up"):
+					      movimiento_y=-100
+		1.3.9 Cargamos los movimientos 
+ 			          move_and_slide(Vector2(movimiento_x,movimiento_y),Vector2(0,-1))
+				LISTO!     
+	
+	1.5. Ejecutar los AnimatedSprite desde script 
+		1.5.1 if(Input.is_action_pressed("ui_accion"):
+			$AnimatedSprite.play("accion")
+	1.6 Agregar cambio de perfil del sprite mediante script
+			$AnimatedSprite.flip_h=false or true
+	
+2. Crear Escenario de Nivel 1
+		2.1 Hacer clic Escenas>Escena nueva>clic derecho en "Node 2D" Renombrar>
+				      >Poner Nivel1>clic derecho en nodo Nivel1>Agregar ParallaxBackground>Agregar Sprite
+		
+3. Crear plataformas (tileset)
+		3.1 Hacer clic Escenas>Escena nueva>clic derecho en "Node 2D" Renombrar>
+				      >Poner Plataformas>Agregar Sprite> Bajo Sprite Agregar StaticBody2D
+				      >Bajo StaticBody2D Agregar CollisionShape2D
+4. Agregar TileMap a el Nivel 1
+		4.1 Insertar un nuevo tileSet en la parte de Inspector> cargar tileSet> cargar "Plataformas.tres"
+			Una vez seleccionada nuestra plataforma a usar, Clic izquierdo para agregar una plataforma sobre el tilemap y clic derecho para
+			eliminar una plataforma del tilemap
+5. Agregar el Jugador al Nivel 1
+		Clic en el icono de instanciar archivo de escena como nodo> seleccionar escena Jugador
+		>Para minimizar su tamaño lo podemos hacer en la seccion de inspector>transform>scale
+
+6. Agregar ParallaxBackground antes del Sprite de Fondo del Nivel 1> ParallaxBackground ira como hijo del nodo Jugador
+
+7. Crear Objetos
+	7.1 Crear una escena nueva> Nodo Tipo Area2D> Bajo Area2D Agregar Sprite> Bajo Area2D Agregar CollisionShape2D
+
+8. Inportar objetos a Nivel1
+
+9. Programar Objetos
+	9.1 Añadir script al objeto
+	9.2 En el Nodo Area2D> Alado de la seccion Inspector ("Nodos")> seleccionar la señal body_entered(body:Node)
+	9.3 Conectamos con el nodo Area2D
+	9.4 En este caso necesitamos verificar que si el nodo "Jugador" entra en contacto con la zona del objeto creado, nos envie una señal,
+		Para ello preguntamos if (body.name=="Jugador"):
+					queue_free()-----> Lo que hara que el objeto creado se autoelimine o libere en el momento de ejecucion
+
+10. Coleccionar objetos en la parte superior del Nivel1
+		10.1 En el nivel1 Agregamos un sprite con la imagen del objeto que se recogio.
+		10.2 Este sprite lo mandamos a ser hijo del nodo Jugador
+		10.3 Programamos la visibilidad del sprite
+			10.3.1	En el nodo "huevo" ubicado en el Nivel1 agregamos una señal tipo body_entered la cual este enlazada con el nodo "Jugador"
+			10.3.2 Luego de esto En nuestra funcion creada preguntamos:
+						if(body.name=="Jugador"):
+							$huevo.visible=true
+						else:
+							$huevo.visible=false
+				Esto nos servira para que nuestro sprite se haga visible cuando entre en contacto el jugador con el objeto
+
+11. Crear puntuacion al coger objetos
+	11.1 Añadir un nodo label en el KinematicBody2D, lo llamaremos Puntos
+	11.2 Declarar variable "puntos"=0, "puntajeHuevo"=10 en el script del kinematicBody
+	11.3 Validar una funcion llamada "actualizar_puntos(): " dentro del physics_process() o _process(): 
+	11.4 Crear la funcion "actualizar_puntos():"
+	11.5 En la funcion actualizar_puntos(): se enlazara el valor de la variable "puntos" con el label llamado "puntos" de la siguiente forma:
+				$Puntos.text=String(puntos)
+	11.6 Y al momento de que el jugador tome un objeto en las funciones "on_huevo_body_entered():" (Nombre de la funcion en nuestro caso) se preguntara:
+			if(body.name=="Jugador"):
+				puntos=puntos+puntajeHuevo
+				actualizar_puntos()
+		De esta forma se puede ir agregando esta seccion de codigo a cada una de las funciones de los objetos, para ir sumando mas puntos.
+
+12. Crear tiempo
+	12.1 Añadir un nodo label en en KinematicBody2D, lo llamaremos Tiempo
+	12.2 Añadir nodo Timer en Nivel1, en propiedades activar "autostart"
+	12.2 Declarar variable "tiempo"=60 en el KinematicBody2D
+	12.3 Validar la funcion "actualizar_tiempo()" en physics_process() o _process()
+	12.4 Crear funcion "actualizar_tiempo():"
+	12.5 Dentro de la funcion actualizar_tiempo() enlazamos  el valor de tiempo al label llamado "Tiempo" de la siguiente forma:
+				$Tiempo.text=String(tiempo)
+	12.6 Creamos una señal (timeout) del nodo Timer enlazada con el kinematicBody2D, dentro de la funcion que se crea al enlazar preguntamos:
+				if(tiempo>0):
+					tiempo-=1
+				actualizar_tiempo()
+				elif (tiempo==0): get_tree().reload_current_scene() 
+
+13. Crear Enemigo
+	13.1 Crear nueva escena>agregar nodo Area2D > bajo nodoArea2D agregar animatedSprite> bajo nodoArea2D agregar collisionShape2D
+	13.2 Agregar script al nodo Area2D
+	13.3 Habilitar dentro de la funcion ready la funcion _physics_process()
+	13.4 Dentro de la funcion physics_process() agregar que se ejecute el animatedSprite del objeto que queremos animar:
+					$AnimatedSprite.play("volarEnemigo")
+	13.5 Para hacer que nuestro objeto se mueva en Y, ingresaremos el siguiente codigo en nuestro Enemigo:
+					var Pos = position.y 
+					var PosLim = Pos-200
+					var Volar = true
+				Dentro de la funcion func _ready():
+								set_physics_process(true)
+				Dentro de la funcion func _physics_process(delta):
+								if Volar == true:
+								position.y -= 1 
+								else:
+								position.y += 1
+
+								if(position.y==PosLim):
+								Volar=false
+								elif (position.y==Pos):
+								Volar=true
+					
+								
+	13.5 Luego lo importamos a la escena del nivel1 al igual que se hizo con el jugador y los objetos de recoleccion
+	13.6 Luego de ello se programa el contacto del Enemigo con el Jugador
+	
+	13.6.1	Se crea una señal (body_entered) desde el nodo Enemigo enlazada con el jugador y preguntamos dentro de la funcion creada:
+			if(body.name=="Jugador"):
+				get_tree().reload_current_scene()
+		De esta manera se estara reiniciando el nivel cada vez que el jugador choque con el enemigo
+
+14. Crear Barra de vida
+	14.1 Añadir un ProgressBar al KinematicBody2D ubicado en el Nivel1>Poner de nombre "Vida"> En el script del player declarar
+	las variables vida_max, vida_act y barra_vida.> En la funcion ready() guardar enlazar el valor de la barra de vida de la interfaz 
+ 	con la variable barra_vida, mediante el siguiente codigo: barra_vida=$Vida>En nuestra funcion physics_process() declaramos la funcion
+	actualizar_vida()>Dentro de la funcion actualizar_vida() calcularemos la vida del jugador mediante el siguiente codigo:
+					barra_vida.value=vida_act*barra_vida.max_value/vida_max
+	*Configuramos el Custom Styles para apreciar los colores en la vida del jugador
+	14.2 Programar la vida del jugador al hacer contacto con los enemigos> Cambiar forma de interaccion con los objetos y que baje vida
+
+15. Crear Punto de Meta
+	15.1 Crear nueva escena> nodo tipo area2D> bajo Nodo Area2D agregar Sprite y CollisionShape2D
+	15.2 Agregar nodo Meta al Nivel1
+	15.3 Programar nodo Meta al entrar en contacto con el Jugador
+
+16. Duplicar Nivel1
+	16.1 Cambiar sprite de fondos
+	16.1 Agregar otros nuevos objetos
+	16.2 Agregar otro estilo de plataformas
+	
+17. Game Over
+	17.1 Agregar un sprite
+
+
+Metodos godot usados en el juego
+
+get_tree().reload_current_scene() //Recarga el escenario actual
+get_node() --> $ //permite el acceso las propiedades del nodo
+
+if(body.name=="Jugador"):
+		queue_free()
+
+if is_on_floor():
+
+$AnimatedSprite.play("alto")
+
+direccion = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
+
+move_and_slide(Vector2(movimiento_x,movimiento_y), Vector2(0,-1))
+
+if(Input.is_action_pressed("ui_up")):
+			movimiento_y = -500
+
+$Tiempo.text=String(tiempo)
+
+if(body.name=="Jugador" && owner.name=="Nivel2"):
+		get_tree().change_scene("res://GameOver.tscn")
+				 
+	
+
+	
+
+
+
+
+
+
+
+
+
+	

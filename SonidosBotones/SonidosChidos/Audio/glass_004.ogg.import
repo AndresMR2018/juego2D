@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/glass_004.ogg-1b0dbfc3fa715e23f5650dc908e72d3a.oggstr"
+
+[deps]
+
+source_file="res://SonidosBotones/SonidosChidos/Audio/glass_004.ogg"
+dest_files=[ "res://.import/glass_004.ogg-1b0dbfc3fa715e23f5650dc908e72d3a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

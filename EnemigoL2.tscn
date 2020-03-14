@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Plataformas/PNG/Enemies/spikeMan_walk1.png" type="Texture" id=2]
+[ext_resource path="res://Plataformas/PNG/Enemies/spikeMan_walk2.png" type="Texture" id=4]
+[ext_resource path="res://EnemigoL2.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "caminarEnemigo",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 55.1877, 78.1739 )
+
+[node name="EnemigoL2" type="Area2D"]
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 518.85, 315.215 )
+frames = SubResource( 1 )
+animation = "caminarEnemigo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 517.492, 318.154 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

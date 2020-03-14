@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactPlate_medium_003.ogg-7cd26388a8448ff66eaed8f1ad55090f.oggstr"
+
+[deps]
+
+source_file="res://SonidosBotones/SonidosImpacto/Audio/impactPlate_medium_003.ogg"
+dest_files=[ "res://.import/impactPlate_medium_003.ogg-7cd26388a8448ff66eaed8f1ad55090f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

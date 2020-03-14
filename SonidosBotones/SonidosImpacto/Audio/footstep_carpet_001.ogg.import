@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/footstep_carpet_001.ogg-d983b0450d15feaafcd137ee29433b47.oggstr"
+
+[deps]
+
+source_file="res://SonidosBotones/SonidosImpacto/Audio/footstep_carpet_001.ogg"
+dest_files=[ "res://.import/footstep_carpet_001.ogg-d983b0450d15feaafcd137ee29433b47.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

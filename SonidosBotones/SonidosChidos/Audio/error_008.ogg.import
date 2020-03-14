@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/error_008.ogg-16ae666710ebd3b4c0a94788ac5613fb.oggstr"
+
+[deps]
+
+source_file="res://SonidosBotones/SonidosChidos/Audio/error_008.ogg"
+dest_files=[ "res://.import/error_008.ogg-16ae666710ebd3b4c0a94788ac5613fb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
